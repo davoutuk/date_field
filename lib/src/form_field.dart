@@ -18,7 +18,7 @@ class DateTimeFormField extends FormField<DateTime> {
     super.validator,
     super.restorationId,
     super.autovalidateMode = AutovalidateMode.disabled,
-    this.materialOnAllPlatforms = false,
+    this.materialOnAllPlatforms = true,
     this.canClear = true,
     this.clearIconData = Icons.clear,
     TextStyle? style,
