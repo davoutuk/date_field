@@ -56,6 +56,7 @@ class DateTimeField extends StatefulWidget {
     this.enableFeedback = false,
     this.padding,
     this.hideDefaultSuffixIcon = false,
+    this.materialOnAllPlatforms = false,
     this.decoration,
     DateTime? initialPickerDateTime,
     this.cupertinoDatePickerOptions = const CupertinoDatePickerOptions(),
@@ -201,6 +202,7 @@ class DateTimeField extends StatefulWidget {
     this.decoration,
     this.mode = DateTimeFieldPickerMode.dateAndTime,
     this.initialPickerDateTime,
+    this.materialOnAllPlatforms = false,
     DateTime? firstDate,
     DateTime? lastDate,
     DateFormat? dateFormat,
@@ -253,6 +255,9 @@ class DateTimeField extends StatefulWidget {
 
   /// See [InkWell.enableFeedback].
   final bool enableFeedback;
+
+  final bool materialOnAllPlatforms;
+
 
   /// The first [DateTime] the user can select.
   ///
@@ -433,7 +438,7 @@ class _DateTimeFieldState extends State<DateTimeField> {
 
     final TargetPlatform platform = Theme.of(context).platform;
 
-    if (platform == TargetPlatform.iOS || platform == TargetPlatform.macOS) {
+    if ((widget.materialOnAllPlatforms == false) && (platform == TargetPlatform.iOS || platform == TargetPlatform.macOS)) {
       final DateTime? newDateTime = await _showCupertinoPicker();
       _isSelecting = false;
 
