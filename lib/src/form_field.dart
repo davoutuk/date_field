@@ -18,6 +18,7 @@ class DateTimeFormField extends FormField<DateTime> {
     super.validator,
     super.restorationId,
     super.autovalidateMode = AutovalidateMode.disabled,
+    this.materialOnAllPlatforms = false,
     this.canClear = true,
     this.clearIconData = Icons.clear,
     TextStyle? style,
@@ -95,6 +96,7 @@ class DateTimeFormField extends FormField<DateTime> {
               child: Builder(
                 builder: (BuildContext context) {
                   return DateTimeField._formField(
+                    materialOnAllPlatforms: materialOnAllPlatforms,
                     value: state.value,
                     onChanged: onChanged == null ? null : state.didChange,
                     onTap: onTap,
@@ -138,6 +140,8 @@ class DateTimeFormField extends FormField<DateTime> {
 
   /// The icon to use for the clear button.
   final IconData clearIconData;
+
+  final bool materialOnAllPlatforms;
 
   @override
   FormFieldState<DateTime> createState() => _DateTimeFormFieldState();
